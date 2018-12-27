@@ -95,7 +95,7 @@
 
     function update_grade(sno, cno) {
         grade = parseFloat(prompt("请输入成绩："));
-        if (grade && grade >= 0 && grade <= 100) {
+        if (grade === 0 || (grade && grade >= 0 && grade <= 100)) {
             grade = grade.toFixed(1);
             link = "/update_grade?sid="+ sno +"&cid="+ cno +"&grade="+ grade +"&page=<%= @page %>";
             window.location.href = link;
