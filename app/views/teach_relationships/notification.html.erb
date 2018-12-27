@@ -1,0 +1,73 @@
+<% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<% provide :subtitle, ('发布通知') %>
+<body style="background: none">
+
+<%= render 'shared/sidebar' %>
+<%= render 'shared/bootstrap_table' %>
+<div class="right-side-div">
+
+  <h1><%= yield :subtitle %></h1>
+  <div class="divide"></div>
+
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+      <form class="form form-horizontal" action="/send_course_notification" method="post">
+        <%= tag(:input, :type => "hidden", :name =>
+            request_forgery_protection_token.to_s, :value =>
+                    form_authenticity_token) %>
+        <div class="form-group">
+          <label for="courses">课程：</label>
+          <select class="form-control select-group" id="courses" name="course">
+            <% @courses.each do |c| %>
+              <option><%= c.cno + ":" + c.title %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="title">通知标题：</label>
+          <input type="text" class="form-control" maxlength="30" name="title" id="title">
+        </div>
+
+        <div class="form-group">
+          <label for="content">通知内容：</label>
+          <textarea class="form-control" rows="20" style="resize: none" name="content"></textarea>
+
+          <input type="submit" value="发布通知" class="btn btn-primary" style="margin-top: 20px" data-disable-with="发布通知">
+        </div>
+
+
+      </form>
+
+      <% flash.each do |message_type, message| %>
+        <div class="alert notification-alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+
+
+</div>
+
+<style>
+
+  .select-group {
+    width: 400px;
+    display: inline;
+    height: 25px;
+  }
+
+  .notification-alert {
+      width: 562px;
+    margin: auto;
+  }
+
+</style>
+
+</body>
+

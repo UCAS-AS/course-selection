@@ -1,0 +1,10 @@
+<h2><%= @subject %> | 《<%= @course.title %>》课程通知</h2>
+<p>全体学生：</p>
+<div>
+  <% @content.split("\n").each do |p| %>
+    <p style="text-indent: 2em"><%= p.lstrip.rstrip %></p>
+  <% end %>
+</div>
+<br>
+<p style="text-indent: 3em"><%= @teacher.name %></p>
+<p style="text-indent: 2em"><%=Time.zone.now.year %>年<%=Time.zone.now.month %>月<%=Time.zone.now.day %>日</p>

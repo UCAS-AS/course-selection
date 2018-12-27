@@ -1,0 +1,79 @@
+<% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<% provide :subtitle, ('查看课程') %>
+<body style="background: none">
+
+<%= render 'shared/sidebar' %>
+<%= render 'shared/bootstrap_table' %>
+<div class="right-side-div">
+
+  <h1><%= yield :subtitle %></h1>
+  <div class="divide"></div>
+  <% flash.each do |message_type, message| %>
+    <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+
+  <table class="table table-hover" style="margin-top: 10px">
+    <thead>
+    <th>
+      学年
+    </th>
+    <th>
+      学期
+    </th>
+    <th>
+      课程编号
+    </th>
+    <th>
+      课程名
+    </th>
+    <th>
+      周次/时间/教室
+    </th>
+    <th>
+      课程类型
+    </th>
+    <th>
+      学分/学时
+    </th>
+    <th>
+      限选/已选人数
+    </th>
+    </thead>
+    <tbody>
+
+    <% @courses.each do |c| %>
+
+      <tr>
+        <td><%= c.year %></td>
+        <td><%= c.semester %></td>
+        <td><%= c.cno %></td>
+        <td><%= c.title %></td>
+
+        <td>
+          <% c.week_time_classroom.split(';').each do |time|%>
+            <div><%= time %></div>
+          <% end %>
+        </td>
+        <td><%= c.course_type %></td>
+        <td><%= c.credit.to_s + "/" + c.hours.to_s%></td>
+        <td><%= c.select_limit.to_s + "/" + c.students.count.to_s %></td>
+
+      </tr>
+
+    <% end %>
+
+    </tbody>
+  </table>
+
+</div>
+
+<style>
+
+  td {
+    text-align: left !important;
+  }
+
+</style>
+
+</body>
+

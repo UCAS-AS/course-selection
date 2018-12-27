@@ -1,0 +1,66 @@
+<% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<% provide :subtitle, ('成绩登记') %>
+<body style="background: none">
+
+<%= render 'shared/sidebar' %>
+<%= render 'shared/bootstrap_table' %>
+<div class="right-side-div">
+
+  <h1><%= yield :subtitle %></h1>
+  <div class="divide"></div>
+  <% flash.each do |message_type, message| %>
+    <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+
+  <table class="table table-hover" style="margin-top: 10px">
+    <thead>
+    <th>
+      学年
+    </th>
+    <th>
+      学期
+    </th>
+    <th>
+      课程编号
+    </th>
+    <th>
+      课程名
+    </th>
+    <th>
+      选课人数
+    </th>
+    <th>
+      操作
+    </th>
+    </thead>
+    <tbody>
+
+    <% @courses.each do |c| %>
+
+      <tr>
+        <td><%= c.year %></td>
+        <td><%= c.semester %></td>
+        <td><%= c.cno %></td>
+        <td><%= c.title %></td>
+        <td><%= c.students.count %></td>
+        <td>
+          <%= link_to '登记成绩', students_of_course_url(cno: c.cno, page: 1) %>
+        </td>
+
+      </tr>
+
+    <% end %>
+
+    </tbody>
+  </table>
+
+</div>
+
+<style>
+  td {
+    text-align: left;
+  }
+</style>
+
+</body>
+
