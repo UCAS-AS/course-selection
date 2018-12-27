@@ -1,0 +1,36 @@
+<% provide :title, '邮箱激活' %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <%= link_to "选 课 系 统", root_path, id: "logo" %>
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+
+    </ul>
+  </nav>
+
+</header>
+
+<div class="container">
+
+  <div class="row">
+
+    <% flash.each do |message_type, message| %>
+      <div class="alert email-activation-alert alert-<%= message_type %>"><%= message %>前去<a href="/">登录</a>。</div>
+    <% end %>
+
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>
+
+<style>
+  .email-activation-alert {
+    width: 300px;
+    margin: 40% auto;
+    text-align: center;
+  }
+</style>
+
+
+
+
+

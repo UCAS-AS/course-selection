@@ -1,0 +1,16 @@
+<%= form_for(@current_user, as: :student) do |f| %>
+
+  <%= f.label :学号 %>
+  <%= f.text_field :name, class: 'form-control', readonly: :true %>
+
+  <%= f.label :电子邮箱 %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :性别 %>
+  <%= f.text_field :gender, class: 'form-control' %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

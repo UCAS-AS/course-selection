@@ -1,0 +1,43 @@
+<% provide :title, '用户登录' %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <%= link_to "选 课 系 统", root_path, id: "logo" %>
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+
+    </ul>
+  </nav>
+
+</header>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="jumbotron">
+        <h1>博 学 笃 志</h1>
+        <h1>格 物 明 德</h1>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+
+      <%= render 'login_form' %>
+
+      <% flash.each do |message_type, message| %>
+        <div class="alert login-alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+<%= render 'layouts/footer' %>
+
+
+
+
+

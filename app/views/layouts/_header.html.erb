@@ -1,0 +1,13 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <%= link_to "选 课 系 统", root_path, id: "logo" %>
+        <li class="home-nav-li"><%= link_to "退出登录", '#', method: :delete %></li>
+        <% if option == 'teacher' %>
+          <li class="home-nav-li"><a>教师用户：<%= current_user.name %></a></li>
+        <% elsif option == 'student' %>
+          <li class="home-nav-li"><a>学生用户：<%= current_user.name %></a></li>
+        <% end %>
+      </ul>
+    </nav>
+</header>

@@ -1,0 +1,90 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// Header
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  display: inline;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 16px;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  .home-nav-li {
+    float: right;
+    vertical-align: center;
+    color: white;
+    display: inline;
+
+    a {
+      float: right;
+      vertical-align: center;
+      color: white;
+      display: inline;
+    }
+  }
+
+}
+
+.right-side-div {
+  width: 85%;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding: 10px 25px 0 25px;
+
+  h1 {
+    text-align: left;
+  }
+}
+
+.divide {
+  border: 0.5px solid gainsboro;
+  width: 100%
+}
+
+#edit_student {
+  padding: 20px 0;
+}
+
+.th-inner {
+  text-align: center;
+}
+
+.select-a {
+  &:hover {
+    background: none;
+  }
+}
+
+.course-alert {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+.password-reset-alert {
+  width: 331px;
+  margin: 10px 20px;
+}
+
+.btn-primary {
+  color: white;
+  background: #222222;
+  border: 1px solid gainsboro;
+
+
+  &:hover {
+    color: #222222;
+    background: white;
+  }
+}

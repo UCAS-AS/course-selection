@@ -1,0 +1,76 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Login
+body {
+  background: url("login_background.jpg") no-repeat;
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.login-form {
+  margin-top: 65%;
+  background: white;
+  border-radius: 5px;
+  width: 320px;
+}
+
+.jumbotron {
+  margin-top: 30%;
+  background: none;
+  color: white;
+
+  h1 {
+    margin-left: -120px;
+    font-size: 80px;
+    text-shadow: 2px 2px 5px black;
+    font-family: '方正悠宋', '方正宋体', 'serif';
+  }
+}
+
+form {
+  width: 100%;
+  margin: 0;
+  padding: 20px 20px 5px 20px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 0;
+}
+
+.nav {
+  width: 100%;
+  margin: 0;
+}
+
+input {
+  width: 100%;
+  margin: 12px 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.forget_password_link {
+  margin-top: 10px;
+  float: right;
+}
+
+.login-submit-button {
+  background: #222222;
+  border: 1px solid #222222;
+  color: white;
+
+  &:hover {
+    background: white;
+    color: #222222;
+  }
+}
+
+.login-alert {
+  width: 320px;
+  margin-top: 30px;
+  text-align: center;
+}

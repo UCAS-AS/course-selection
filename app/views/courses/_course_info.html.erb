@@ -1,0 +1,10 @@
+<%= form_for(@course, as: :course) do |f| %>
+
+  <%= f.label :课程编号 %>
+  <p class="form-control-static"><%= print(@course.cno) %></p>
+
+  <%= f.label :课程名 %>
+  <p class="form-control-static"><%= print(@course.name) %></p>
+
+
+<% end %>

@@ -1,0 +1,126 @@
+<% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<% provide :subtitle, ('选择课程') %>
+<body style="background: none">
+
+<%= render 'shared/sidebar' %>
+<%= render 'shared/bootstrap_table' %>
+<div class="right-side-div">
+
+  <h1><%= yield :subtitle %></h1>
+  <div class="divide"></div>
+  <% flash.each do |message_type, message| %>
+    <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <table id="select-course-table">
+
+  </table>
+</div>
+
+<script type="text/javascript">
+
+    $("#document").ready(function () {
+
+        $(function () {
+            var oTable = new TableInit();
+            oTable.Init();
+        });
+
+        var TableInit = function () {
+            var oTableInit = {};
+            oTableInit.Init = function () {
+                $('#select-course-table').bootstrapTable({
+                    url: '/get_select_courses',         //请求后台的URL（*）
+                    method: 'get',                      //请求方式（*）
+                    toolbar: '#toolbar',                //工具按钮用哪个容器
+                    striped: true,                      //是否显示行间隔色
+                    cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                    pagination: true,                   //是否显示分页（*）
+                    sortable: true,                     //是否启用排序
+                    sortOrder: "asc",                   //排序方式
+                    queryParams: oTableInit.queryParams,//传递参数（*）
+                    sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                    pageNumber: 1,                       //初始化加载第一页，默认第一页
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                    contentType: "application/x-www-form-urlencoded",
+                    strictSearch: true,
+                    showColumns: true,                  //是否显示所有的列
+                    showRefresh: true,                  //是否显示刷新按钮
+                    minimumCountColumns: 2,             //最少允许的列数
+                    clickToSelect: true,                //是否启用点击选中行
+                    height: 700,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                    showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
+                    cardView: false,                    //是否显示详细视图
+                    detailView: false,                   //是否显示父子表
+                    columns: [
+                        {
+                            field: 'cno',
+                            title: '课程号'
+                        }, {
+                            field: 'title',
+                            title: '课程名'
+                        }, {
+                            field: 'year',
+                            title: '学年'
+                        }, {
+                            field: 'semester',
+                            title: '学期'
+                        }, {
+                            field: 'select_limit_and_selected_count',
+                            title: '限选/已选人数',
+                        }, {
+                            field: 'credit_and_hours',
+                            title: '学分/学时',
+                        }, {
+                            field: 'week_time_classroom',
+                            title: '周次/时间/教室',
+                            formatter: week_time_classroom
+                        }, {
+                            field: 'dept_name',
+                            title: '开课单位',
+                        }, {
+                            field: 'course_type',
+                            title: '类型',
+                        }, {
+                            field: 'teachers',
+                            title: '授课教师',
+                        }, {
+                            field: 'operate',
+                            title: '操作',
+                            formatter: operateFormatter //自定义方法，添加操作按钮
+                        },
+                    ],
+                });
+            };
+
+            //得到查询的参数
+            oTableInit.queryParams = function (params) {
+                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                    limit: params.limit,   //页面大小
+                    offset: params.offset
+                };
+                return temp;
+            };
+            return oTableInit;
+        };
+
+        function week_time_classroom(value, row, index) {
+            times = value.split(";");
+            res = "";
+            $.each(times, function () {
+                res += "<div>" + this + " </div>"
+            });
+            return res;
+        }
+
+
+        function operateFormatter(value, row, index) {//赋予的参数
+            return [
+                "<a class='table-operation-a' data-confirm='确定要选择这门课吗?' rel='nofollow' data-method='create' href='/to_select_course?cno=" + row.cno + "'>选课</a>"
+            ].join('');
+        }
+    });
+
+</script>
+</body>
+

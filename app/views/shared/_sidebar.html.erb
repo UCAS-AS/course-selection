@@ -1,0 +1,49 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<%= stylesheet_link_tag 'sidebar', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="nav-side-menu">
+  <div class="brand"><a href="/home"><span class="sidebar-logo" >选 课 系 统</span></a></div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+  <div class="menu-list">
+
+    <ul id="menu-content" class="menu-content collapse out">
+      <% if option == 'student' %>
+        <li data-toggle="collapse" data-target="#course-management" class="collapsed">
+          <span style="margin-left: 22px">课 程 管 理</span>
+        </li>
+        <ul class="sub-menu collapse in" id="course-management">
+          <li><%= link_to '选择课程', select_courses_url %></li>
+          <li><%= link_to '已选课程', selected_courses_url %></li>
+          <li><%= link_to '学分统计', credit_count_url %></li>
+          <li><%= link_to '成绩查询', grades_url %></li>
+        </ul>
+
+      <% elsif option == 'teacher' %>
+
+        <li data-toggle="collapse" data-target="#course-management" class="collapsed">
+          <span style="margin-left: 22px">课 程 管 理</span>
+        </li>
+        <ul class="sub-menu collapse in" id="course-management">
+          <li><a href="#">查看课程</a></li>
+          <li><a href="#">成绩登记</a></li>
+          <li><a href="#">发布通知</a></li>
+        </ul>
+
+    <% end %>
+      <li data-toggle="collapse" data-target="#service" class="collapsed">
+        <span style="margin-left: 22px">账 号 管 理</span>
+      </li>
+      <ul class="sub-menu collapse in" id="service">
+        <li><%= link_to '个人资料', user_profile_url %></li>
+        <li><%= link_to '邮箱设置', email_setting_url %></li>
+        <li><%= link_to '修改密码', password_setting_url %></li>
+      </ul>
+      <li style="position: absolute; bottom: 0; width: 100%; text-align: center">
+        <i class='fa fa-power-off fa-lg' style='margin-right: 10px'></i>
+        <%= link_to "退 出 登 录", logout_path, method: :delete, class: 'logout-a' %>
+      </li>
+    </ul>
+  </div>
+</div>

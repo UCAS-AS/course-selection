@@ -1,0 +1,69 @@
+<% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<% provide :subtitle, ('成绩查询') %>
+<body style="background: none">
+
+<%= render 'shared/sidebar' %>
+<div class="right-side-div">
+
+  <h1><%= yield :subtitle %></h1>
+  <div class="divide"></div>
+  <% flash.each do |message_type, message| %>
+    <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+
+  <table class="table table-hover" style="margin-top: 10px">
+    <thead>
+    <th>
+      学年
+    </th>
+    <th>
+      学期
+    </th>
+    <th>
+      课程编号
+    </th>
+    <th>
+      课程名
+    </th>
+    <th>
+      课程类型
+    </th>
+    <th>
+      学分
+    </th>
+    <th>
+      授课教师
+    </th>
+    <th>
+      学位课
+    </th>
+    <th>
+      成绩
+    </th>
+    </thead>
+    <tbody>
+
+    <% @courses.each do |c| %>
+      <% unless get_grade(@current_user, c).nil? %>
+        <tr>
+          <td><%= c.year %></td>
+          <td><%= c.semester %></td>
+          <td><%= c.cno %></td>
+          <td><%= c.title %></td>
+          <td><%= c.course_type %></td>
+          <td><%= c.credit %></td>
+          <td><%= get_teachers_name(c) %></td>
+          <td><%= is_degree_course(@current_user, c) ? '是' : '否' %></td>
+          <td><%= get_grade(@current_user, c) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    </tbody>
+  </table>
+
+
+</div>
+
+
+</body>

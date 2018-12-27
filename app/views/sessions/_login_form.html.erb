@@ -1,0 +1,46 @@
+<div class="login-form">
+  <ul class="nav nav-tabs nav-justified">
+    <li role="presentation" id="student-login-option-li" class="active">
+      <a class="btn" id="student-login-option">学生用户</a></li>
+    <li role="presentation" id="teacher-login-option-li"><a class="btn" id="teacher-login-option">教师用户</a></li>
+  </ul>
+
+  <%= form_for(:session, url: login_url) do |f| %>
+
+    <%= f.label :学号, id: 'account-label' %>
+    <%= f.text_field :account, autofocus: true, class: 'form-control' %>
+
+    <%= f.label :密码 %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <%= f.submit '登 录', class: 'btn btn-default login-submit-button' %>
+
+    <%= f.hidden_field :option, id: 'option', value: 'student' %>
+
+    <div class="form-group">
+      <div class="checkbox checkbox-inline" style="padding-left: 0; margin-left: 0; margin-top: 0">
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>保持登录</span>
+        <% end %>
+      </div>
+      <%= link_to '忘记密码?', '/forget_password', class: 'forget_password_link' %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+    $("#student-login-option").click(function () {
+        $("#option").val("student");
+        $("#student-login-option-li").addClass("active");
+        $("#teacher-login-option-li").removeClass("active");
+        $("#account-label").html("学号");
+    });
+
+    $("#teacher-login-option").click(function () {
+        $("#option").val("teacher");
+        $("#teacher-login-option-li").addClass("active");
+        $("#student-login-option-li").removeClass("active");
+        $("#account-label").html("教职工号");
+    });
+</script>
