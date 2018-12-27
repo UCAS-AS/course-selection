@@ -217,8 +217,6 @@
   </form>
   <table class="table table-striped table-bordered table-hover" style="margin-top: 10px">
     <thead>
-    <th>学年</th>
-    <th>学期</th>
     <th>课程编号</th>
     <th>课程名</th>
     <th>周次/时间/教室</th>
@@ -232,8 +230,6 @@
 
     <% @courses.each do |c| %>
       <tr>
-        <td><%= c.year %></td>
-        <td><%= c.semester %></td>
         <td><%= c.cno %></td>
         <td><%= c.title %></td>
         <td>
