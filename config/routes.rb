@@ -49,9 +49,9 @@ Rails.application.routes.draw do
   get '/email_setting', to: 'static_pages#email_setting'
   get '/forget_password', to: 'static_pages#forget_password'
 
-  patch '/update_password', to: 'password_reset#password_setting'
+  post '/update_password', to: 'password_reset#password_setting'
   post '/password_reset', to: 'password_reset#create'
-  patch '/to_password_reset', to: 'password_reset#update'
+  post '/to_password_reset', to: 'password_reset#update'
 
   post '/email_activation', to: 'email_activation#create'
 end
