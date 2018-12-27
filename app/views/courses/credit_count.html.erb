@@ -38,12 +38,12 @@
     </thead>
     <tbody>
     <tr>
-      <td><%= grade_count @current_user.courses.find_by(course_type: "专业必修课") %></td>
-      <td><%= grade_count @current_user.courses.find_by(course_type: "专业选修课") %></td>
-      <td><%= grade_count @current_user.courses.find_by(course_type: "专业核心课") %></td>
-      <td><%= grade_count @current_user.courses.find_by(course_type: "公共必修课") %></td>
-      <td><%= grade_count @current_user.courses.find_by(course_type: "公共选修课") %></td>
-      <td><%= grade_count @current_user.courses.find_by(course_type: "专业讨论课") %></td>
+      <td><%= grade_count @current_user.courses.where(course_type: "专业必修课") %></td>
+      <td><%= grade_count @current_user.courses.where(course_type: "专业选修课") %></td>
+      <td><%= grade_count @current_user.courses.where(course_type: "专业核心课") %></td>
+      <td><%= grade_count @current_user.courses.where(course_type: "公共必修课") %></td>
+      <td><%= grade_count @current_user.courses.where(course_type: "公共选修课") %></td>
+      <td><%= grade_count @current_user.courses.where(course_type: "专业讨论课") %></td>
       <td><%= grade_count @current_user.courses %></td>
     </tr>
     </tbody>

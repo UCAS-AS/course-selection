@@ -24,12 +24,15 @@ module ApplicationHelper
   def grade_count(courses)
     if courses.nil?
       0
-    elsif courses.class == Course
-      courses.credit
     else
       res = 0
-      courses.each do |c|
-        res += c.credit.to_i
+      begin
+        res = 0
+        courses.each do |c|
+          res += c.credit.to_i
+        end
+      rescue NoMethodError
+        res = courses.credit
       end
       res
     end
