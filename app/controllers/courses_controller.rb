@@ -29,6 +29,7 @@ class CoursesController < ApplicationController
   def select_courses
     @years = [2017, 2018, 2019, 2020]
     @semester = ["春季", "秋季", "夏季"]
+    @course_types = ["专业必修课", "专业选修课", "专业核心课", "公共必修课", "公共选修课", "专业讨论课"]
     @page = params[:page]
     @query_params = Hash.new
     @departments = Department.all
@@ -55,6 +56,7 @@ class CoursesController < ApplicationController
   def selected_courses
     @years = [2017, 2018, 2019, 2020]
     @semester = ["春季", "秋季", "夏季"]
+    @course_types = ["专业必修课", "专业选修课", "专业核心课", "公共必修课", "公共选修课", "专业讨论课"]
     @page = params[:page]
     @query_params = Hash.new
     @departments = Department.all

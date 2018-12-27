@@ -40,7 +40,7 @@ Department.create!(dno: 'psych', name: '心理学系')
 Department.create!(dno: 'sdc', name: '中丹学院')
 Department.create!(dno: 'ic', name: '国际学院')
 
-dept = Department.first
+dept = Department.find_by(dno: 'scce')
 
 dept.students.create!(sno: '2018E8015061016',
                       name: '颜复海',

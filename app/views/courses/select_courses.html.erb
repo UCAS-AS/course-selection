@@ -63,12 +63,13 @@
       <label for="course-type">课程类型：</label>
       <select class="form-control" id="course-type" name="course_type">
         <option>全部</option>
-        <option>专业选修课</option>
-        <option>专业核心课</option>
-        <option>专业必修课</option>
-        <option>专业讨论课</option>
-        <option>公共必修课</option>
-        <option>公共选修课</option>
+        <%= @course_types.each do |value| %>
+          <% if params[:course_type].to_s == value %>
+            <option value="<%= value %>" selected="selected"><%= value %></option>
+          <% else %>
+            <option value="<%= value %>"><%= value %></option>
+          <% end %>
+        <% end %> %>
       </select>
     </div>
 
