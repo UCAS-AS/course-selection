@@ -1,0 +1,24 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: ruby
+  password: neptune.
+  host: localhost
+  port: 3306
+  flags:
+  - -COMPRESS
+  - FOUND_ROWS
+  - MULTI_STATEMENTS
+  secure_auth: false
+
+development:
+  <<: *default
+  database: course_selection
+
+test:
+  <<: *default
+  database: course_selection_test
+
+production:
+  <<: *default
+  database: course_selection

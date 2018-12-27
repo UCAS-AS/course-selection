@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
 
   end
 
-  def password_reset
+  def update_password
 
   end
 

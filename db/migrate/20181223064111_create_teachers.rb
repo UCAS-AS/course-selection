@@ -14,7 +14,7 @@ class CreateTeachers < ActiveRecord::Migration[5.2]
       t.string :remember_digest
       t.string :email_activation_digest
       t.boolean :email_activated
-      t.datetime :email_activated_sent_at
+      t.datetime  :email_activated_sent_at
       t.references :department, forein_key: true
 
       t.timestamps
