@@ -1,24 +1,62 @@
-# README
+# 一个简单的选课系统
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+本项目为中国科学院大学研究生课程《高级软件工程》的课程项目，仅作为教育用途。
 
-Things you may want to cover:
+## 项目信息
 
-* Ruby version
+### 题目
+选课系统
 
-* System dependencies
+### 组员成员
+颜复海 王毅蒙 徐文文
 
-* Configuration
+## 如何运行
 
-* Database creation
+```bash
+$ git clone https://github.com/UCAS-AS/course-selection.git
+$ cd course-selection
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+$ rails s
+```
 
-* Database initialization
+## 功能简介
+### 一、学生模块
+1. 登录验证
+2. 通过邮件链接重置密码
+3. 邮箱激活
+4. 账号管理
+	- 查看个人资料
+	- 绑定新邮箱
+	- 修改密码
+5. 课程管理
+	- 选课
+	- 退课
+	- 学分统计
+	- 查询成绩
 
-* How to run the test suite
+### 二、教师模块
+1. 登录验证
+2. 通过邮件链接重置密码
+3. 邮箱激活
+4. 账号管理
+	- 查看个人资料
+	- 绑定新邮箱
+	- 修改密码
+5. 课程管理
+	- 查看教授课程
+	- 登记成绩
+	- 发布课程通知
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 三、管理员模块
+1. 用户管理（用户包括：学生，教师）
+	- 添加新用户
+	- 删除用户
+	- 更新用户信息
+	- 查看所有用户
+2. 课程管理
+	- 添加新课程
+	- 删除课程
+	- 更新课程信息
+	- 查看所有课程
