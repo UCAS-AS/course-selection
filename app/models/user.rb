@@ -21,7 +21,7 @@ module User
   end
 
   def already_send_password_reset?
-    self.reset_sent_at >= 30.minutes
+    !self.reset_sent_at.nil? && self.reset_sent_at >= 30.minutes.ago
   end
 
   def create_email_activation
@@ -46,6 +46,7 @@ module User
     update_attribute(:email, new_email)
     update_attribute(:email_activated, true)
     update_attribute(:email_activation_digest, nil)
+    update_attribute(:email_activated_sent_at, nil)
   end
 
   def remember

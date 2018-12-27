@@ -1,44 +1,100 @@
 <%= form_for(@current_user, as: :student) do |f| %>
 
-  <%= f.label :姓名 %>
-  <p class="form-control-static"><%= print(@current_user.name) %></p>
+  <div class="row">
+    <div class="col-md-2">
 
-  <% if option == 'student' %>
-    <%= f.label :学号 %>
-    <p class="form-control-static"><%= print(@current_user.sno) %></p>
-  <% elsif option == 'teacher' %>
-    <%= f.label :教职工号 %>
-    <p class="form-control-static"><%= print(@current_user.tno) %></p>
-  <% end %>
+    </div>
+    <div class="col-md-8">
+      <h3>个人信息</h3>
+      <div class="divide" style="margin-bottom: 20px"></div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.label :姓名 %>
+          <p class="form-control-static"><%= print(@current_user.name) %></p>
 
-  <%= f.label :院系 %>
-  <p class="form-control-static"><%= print(@current_user.department.name) %></p>
+          <% if option == 'student' %>
+            <%= f.label :学号 %>
+            <p class="form-control-static"><%= print(@current_user.sno) %></p>
+          <% elsif option == 'teacher' %>
+            <%= f.label :教职工号 %>
+            <p class="form-control-static"><%= print(@current_user.tno) %></p>
+          <% end %>
 
-  <%= f.label :性别 %>
-  <p class="form-control-static"><%= print(@current_user.gender) %></p>
+          <%= f.label :性别 %>
+          <p class="form-control-static"><%= print(@current_user.gender) %></p>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :出生日期 %>
+          <p class="form-control-static"><%= print(@current_user.birth_date.year) %>
+            年<%= print(@current_user.birth_date.month) %>月<%= print(@current_user.birth_date.day) %>日</p>
 
-  <%= f.label :出生日期 %>
-  <p class="form-control-static"><%= print(@current_user.birth_date.year) %>年<%= print(@current_user.birth_date.month) %>月<%= print(@current_user.birth_date.day) %>日</p>
+          <%= f.label :电子邮箱 %>
+          <p class="form-control-static"><%= print(@current_user.email) %></p>
 
-  <%= f.label :电子邮箱 %>
-  <p class="form-control-static"><%= print(@current_user.email) %></p>
+          <%= f.label :联系方式 %>
+          <p class="form-control-static"><%= print(@current_user.phone) %></p>
+        </div>
+      </div>
+    </div>
 
-  <%= f.label :联系方式 %>
-  <p class="form-control-static"><%= print(@current_user.phone) %></p>
+    <div class="col-md-2">
 
-  <% if option == 'student' %>
+    </div>
 
-    <%= f.label :学历 %>
-    <p class="form-control-static"><%= print(@current_user.degree) %></p>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
 
-    <%= f.label :专业 %>
-    <p class="form-control-static"><%= print(@current_user.major) %></p>
+    </div>
 
-    <%= f.label :入学年月 %>
-    <p class="form-control-static"><%= print(@current_user.enrolled_date.year) %>年<%= print(@current_user.enrolled_date.month) %>月</p>
+    <% if option == 'student' %>
 
-  <% elsif option == 'teacher' %>
-    <%= f.label :职称 %>
-    <p class="form-control-static"><%= print(@current_user.title) %></p>
-  <% end %>
+      <div class="col-md-8">
+        <h3>学籍信息</h3>
+        <div class="divide" style="margin-bottom: 20px"></div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :学历 %>
+            <p class="form-control-static"><%= print(@current_user.degree) %></p>
+
+            <%= f.label :专业 %>
+            <p class="form-control-static"><%= print(@current_user.major) %></p>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :院系 %>
+            <p class="form-control-static"><%= print(@current_user.department.name) %></p>
+            <%= f.label :入学年月 %>
+            <p class="form-control-static"><%= print(@current_user.enrolled_date.year) %>
+              年<%= print(@current_user.enrolled_date.month) %>月</p>
+          </div>
+        </div>
+      </div>
+
+    <% elsif option == 'teacher' %>
+      <div class="col-md-8">
+        <h3>教籍信息</h3>
+        <div class="divide" style="margin-bottom: 20px"></div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :职称 %>
+            <p class="form-control-static"><%= print(@current_user.title) %></p>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :院系 %>
+            <p class="form-control-static"><%= print(@current_user.department.name) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+
+  </div>
+
+  </div>
+
+
+
+
+
 <% end %>

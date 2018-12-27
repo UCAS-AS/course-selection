@@ -28,6 +28,7 @@ class Teacher < ApplicationRecord
     courses.delete course
   end
 
-
-
+  def send_course_notification_email(course, title, content)
+    NotificationMailer.course_notification(self, course, title, content).deliver_now
+  end
 end

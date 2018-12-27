@@ -1,4 +1,5 @@
 class PasswordResetController < ApplicationController
+  before_action :is_logged_in?, only: [:password_setting]
   before_action :correct_password, only: [:update]
   before_action :correct_password_for_setting, only: [:password_setting]
 
@@ -22,18 +23,17 @@ class PasswordResetController < ApplicationController
   end
 
   def create
-    p params
     temp_user = Student.find_by(email: params[:email]) || Teacher.find_by(email: params[:email])
     if temp_user.nil?
       flash[:danger] = "该邮箱没有绑定任何用户。"
     else
-      # if temp_user.already_send_password_reset?
-      #   flash[:warning] = "重置密码链接已发送至您的邮箱，请注意查收。"
-      # else
-      temp_user.create_password_reset
-      temp_user.send_password_reset_email
-      flash[:success] = "重置密码链接已发送至您的邮箱，请注意查收，有效期为 30 分钟。"
-      # end
+      if temp_user.already_send_password_reset?
+        flash[:warning] = "重置密码链接已发送至您的邮箱，请注意查收。"
+      else
+        temp_user.create_password_reset
+        temp_user.send_password_reset_email
+        flash[:success] = "重置密码链接已发送至您的邮箱，请注意查收，有效期为 30 分钟。"
+      end
     end
     redirect_to forget_password_url
   end

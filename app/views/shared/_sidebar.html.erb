@@ -26,9 +26,9 @@
           <span style="margin-left: 22px">课 程 管 理</span>
         </li>
         <ul class="sub-menu collapse in" id="course-management">
-          <li><a href="#">查看课程</a></li>
-          <li><a href="#">成绩登记</a></li>
-          <li><a href="#">发布通知</a></li>
+          <li><%= link_to '查看课程', my_courses_url %></li>
+          <li><%= link_to '成绩登记', submit_grades_url %></li>
+          <li><%= link_to '发布通知', notification_url %></li>
         </ul>
 
     <% end %>

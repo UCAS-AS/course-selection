@@ -1,4 +1,13 @@
 class CoursesController < ApplicationController
+  before_action :is_logged_in?
+  before_action :is_teacher?, only: [:my_courses,
+                                     :submit_grades,
+                                     :notification]
+  before_action :is_student?, only: [:select_courses,
+                                     :selected_courses,
+                                     :get_select_courses,
+                                     :get_selected_courses,
+                                     :credit_count]
 
   def new
   end
@@ -22,10 +31,8 @@ class CoursesController < ApplicationController
   end
 
   def selected_courses
-    if option == 'student'
-      current_student = Student.find_by(sno: session[:no])
-      @courses = current_student.courses
-    end
+    current_student = Student.find_by(sno: session[:no])
+    @courses = current_student.courses
   end
 
   def get_select_courses
@@ -78,5 +85,18 @@ class CoursesController < ApplicationController
   def credit_count
 
   end
+
+  def my_courses
+    @courses = @current_user.courses
+  end
+
+  def submit_grades
+
+  end
+
+  def notification
+
+  end
+
 
 end

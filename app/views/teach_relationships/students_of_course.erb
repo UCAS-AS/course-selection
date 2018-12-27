@@ -1,0 +1,110 @@
+<% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<% provide :subtitle, ("《" + @course.title + "》学生名单") %>
+<body style="background: none">
+
+<%= render 'shared/sidebar' %>
+<%= render 'shared/bootstrap_table' %>
+<div class="right-side-div">
+
+  <h1><%= yield :subtitle %></h1>
+  <div class="divide"></div>
+  <% flash.each do |message_type, message| %>
+    <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+
+  <p  style="margin-top: 10px; padding-left: 8px">选课总人数为 <%= @course.students.count %> 人。</p>
+  <table class="table table-hover">
+
+    <thead>
+    <th>
+      序号
+    </th>
+    <th>
+      学号
+    </th>
+    <th>
+      姓名
+    </th>
+    <th>
+      性别
+    </th>
+    <th>
+      学院
+    </th>
+    <th>
+      专业
+    </th>
+    <th>
+      学位
+    </th>
+    <th>
+      成绩
+    </th>
+    <th>
+      操作
+    </th>
+    </thead>
+    <tbody>
+
+    <% i = 1 %>
+    <% @students.each do |s| %>
+
+      <tr>
+        <td><%= (@page.to_i - 1) * 30 + i %></td>
+        <td><%= s.sno %></td>
+        <td><%= s.name %></td>
+        <td><%= s.gender %></td>
+        <td><%= s.department.name %></td>
+        <td><%= s.major %></td>
+        <td><%= s.degree %></td>
+        <td><%= get_grade(s, @course) %></td>
+        <td>
+          <a href="#" onclick="update_grade('<%= s.id %>','<%= @course.id%>')">修改成绩</a>
+        </td>
+
+      </tr>
+      <% i += 1 %>
+    <% end %>
+
+    </tbody>
+  </table>
+
+  <%= will_paginate @students, {previous_label: "« 上一页", next_label: "下一页 »", class: 'students-pagination'} %>
+
+
+</div>
+
+<style>
+
+  td {
+    text-align: left !important;
+  }
+
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #222222;
+    border-color: #222222;
+  }
+
+  .pagination > li > a, .pagination > li > span {
+    color: black;
+  }
+
+</style>
+
+<script>
+
+    function update_grade(sno, cno) {
+        grade = parseFloat(prompt("请输入成绩："));
+        if (grade && grade >= 0 && grade <= 100) {
+            grade = grade.toFixed(1);
+            link = "/update_grade?sid="+ sno +"&cid="+ cno +"&grade="+ grade +"&page=<%= @page %>";
+            window.location.href = link;
+        }
+        else if (grade.length !== 0)
+            alert("格式错误！正确的成绩应为0~100之间的保留一位小数的数。");
+    }
+
+</script>
+
+</body>
+

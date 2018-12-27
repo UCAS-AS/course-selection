@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'teach_relationships/my_courses'
+  get 'teach_relationships/submit_grades'
+  get 'teach_relationships/notification'
   get 'forget_password/create'
   get 'forget_password/destroy'
   get 'email_activation/new'
@@ -33,6 +36,13 @@ Rails.application.routes.draw do
   get '/set_degree_course', to: 'select_relationships#update'
   get '/grades', to: 'select_relationships#grades'
 
+  get '/my_courses', to: 'teach_relationships#my_courses'
+  get '/submit_grades', to: 'teach_relationships#submit_grades'
+  get '/notification', to: 'teach_relationships#notification'
+  get '/students_of_course', to: 'teach_relationships#students_of_course'
+  get '/update_grade', to: 'teach_relationships#update'
+  post '/send_course_notification', to: 'teach_relationships#send_course_notification'
+
   get '/home', to: 'static_pages#home'
   get '/user_profile', to: 'static_pages#user_profile'
   get '/password_setting', to: 'static_pages#update_password'
@@ -40,7 +50,8 @@ Rails.application.routes.draw do
   get '/forget_password', to: 'static_pages#forget_password'
 
   patch '/update_password', to: 'password_reset#password_setting'
-  patch '/email_activation', to: 'email_activation#create'
-  patch '/password_reset', to: 'password_reset#create'
+  post '/password_reset', to: 'password_reset#create'
   patch '/to_password_reset', to: 'password_reset#update'
+
+  post '/email_activation', to: 'email_activation#create'
 end

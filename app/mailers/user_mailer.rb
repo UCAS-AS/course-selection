@@ -23,4 +23,5 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: '密码重置 - 选课系统'
   end
+
 end

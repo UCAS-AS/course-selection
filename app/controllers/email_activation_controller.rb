@@ -37,7 +37,7 @@ class EmailActivationController < ApplicationController
     @option = option
     @current_user = current_user
 
-    if !@current_user.email_activation_digest.nil?
+    if !@current_user.email_activated_sent_at.nil? && @current_user.email_activated_sent_at >= 30.minutes.ago
       flash[:warning] = "激活邮件已发送至您的邮箱，请注意查收。"
     else
       temp_user = Student.find_by(email: new_email) || Teacher.find_by(email: new_email)
