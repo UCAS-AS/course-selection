@@ -85,6 +85,7 @@
     <th>周次/时间/教室</th>
     <th>学时/学分</th>
     <th>类型</th>
+    <th>开课单位</th>
     <th>授课教师</th>
     <th>限选/已选人数</th>
     <th>操作</th>
@@ -103,6 +104,7 @@
           </td>
           <td><%= c.hours.to_s + "/" + c.credit.to_s %></td>
           <td><%= c.course_type %></td>
+          <td><%= c.department.name %></td>
           <td><%= get_teachers_name c %></td>
           <td><%= c.select_limit.to_s + "/" + c.students.count.to_s %></td>
           <td><%= link_to '选课', to_select_course_url(cno: c.cno), method: :post, data: {confirm: "您确定要选这门课吗？"} %></td>
@@ -117,6 +119,10 @@
 </div>
 
 <style>
+
+  th {
+    text-align: center;
+  }
 
   select {
     display: inline;
