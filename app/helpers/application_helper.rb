@@ -20,4 +20,18 @@ module ApplicationHelper
   def format_birth_date(user)
     user.birth_date.year + "/" + user.birth_date.month + "/" + user.birth_date.day
   end
+
+  def grade_count(courses)
+    if courses.nil?
+      0
+    elsif courses.class == Course
+      courses.credit
+    else
+      res = 0
+      courses.each do |c|
+        res += c.credit.to_i
+      end
+      res
+    end
+  end
 end

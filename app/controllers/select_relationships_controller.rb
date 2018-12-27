@@ -59,12 +59,8 @@ class SelectRelationshipsController < ApplicationController
   private
 
   def check(student, course)
-    time_tree = Hash.new
-    student.courses.each do |c|
-      time_tree.merge!(time_tree c.week_time_classroom, c.title)
-    end
+    time_tree = student.get_time_tree
     conflict course.week_time_classroom, time_tree
   end
-
 
 end

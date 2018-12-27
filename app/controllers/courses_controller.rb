@@ -27,63 +27,57 @@ class CoursesController < ApplicationController
   end
 
   def select_courses
+    @years = [2017, 2018, 2019, 2020]
+    @semester = ["春季", "秋季", "夏季"]
+    @page = params[:page]
+    @query_params = Hash.new
+    @departments = Department.all
 
+    unless params[:department].nil? || params[:department] == "全部"
+      @query_params.store :department_id, params[:department].to_i
+    end
+    unless params[:year].nil? || params[:year] == "全部"
+      @query_params.store :year, params[:year]
+    end
+    unless params[:semester].nil? || params[:semester] == "全部"
+      @query_params.store :semester, params[:semester]
+    end
+    unless params[:course_type].nil? || params[:course_type] == "全部"
+      @query_params.store :course_type, params[:course_type]
+    end
+
+    p "Query params: " + @query_params.to_s
+
+    @current_user = Student.find_by(sno: session[:no])
+    @courses = Course.where(@query_params).paginate(page: @page)
   end
 
   def selected_courses
-    current_student = Student.find_by(sno: session[:no])
-    @courses = current_student.courses
-  end
+    @years = [2017, 2018, 2019, 2020]
+    @semester = ["春季", "秋季", "夏季"]
+    @page = params[:page]
+    @query_params = Hash.new
+    @departments = Department.all
 
-  def get_select_courses
-    @student_courses = Student.find_by(sno: session[:no]).courses
-    @courses = Course.all
-    json_a = {total: 0, rows: []}
-    @courses.each do |c|
-      unless @student_courses.include? c
-        json_object = {cno: c.cno,
-                       title: c.title,
-                       week_time_classroom: c.week_time_classroom,
-                       teachers: get_teachers_name(c),
-                       year: c.year,
-                       semester: c.semester,
-                       credit_and_hours: c.credit.to_s + "/" + c.hours.to_s,
-                       select_limit_and_selected_count: c.select_limit.to_s + "/" + c.students.count.to_s,
-                       dept_name: c.department.name,
-                       course_type: c.course_type}
-        json_a[:rows] << json_object
-      end
+    unless params[:department].nil? || params[:department] == "全部"
+      @query_params.store :department_id, params[:department].to_i
     end
-    !json_a[:rows][params[:offset].to_i, params[:limit].to_i]
-    json_a[:total] = json_a[:rows].count
-    render :json => json_a.to_json
-  end
+    unless params[:year].nil? || params[:year] == "全部"
+      @query_params.store :year, params[:year]
+    end
+    unless params[:semester].nil? || params[:semester] == "全部"
+      @query_params.store :semester, params[:semester]
+    end
+    unless params[:course_type].nil? || params[:course_type] == "全部"
+      @query_params.store :course_type, params[:course_type]
+    end
 
-  def get_selected_courses
     @current_user = Student.find_by(sno: session[:no])
-    @courses = @current_user.courses
-    json_a = {total: @courses.count, rows: []}
-    @courses.each do |c|
-      @select = SelectRelationship.find_by(student_id: @current_user.id, course_id: c.id)
-      json_object = {cno: c.cno,
-                     title: c.title,
-                     week_time_classroom: c.week_time_classroom,
-                     teachers: get_teachers_name(c),
-                     year: c.year,
-                     semester: c.semester,
-                     credit_and_hours: c.credit.to_s + "/" + c.hours.to_s,
-                     select_limit_and_selected_count: c.select_limit.to_s + "/" + c.students.count.to_s,
-                     dept_name: c.department.name,
-                     course_type: c.course_type,
-                     is_degree_course: @select.is_degree_course}
-      json_a[:rows] << json_object
-    end
-    !json_a[:rows][params[:offset].to_i, params[:limit].to_i]
-    render :json => json_a.to_json
+    @courses = @current_user.courses.where(@query_params).paginate(page: @page)
   end
 
   def credit_count
-
+    @current_user = current_user
   end
 
   def my_courses

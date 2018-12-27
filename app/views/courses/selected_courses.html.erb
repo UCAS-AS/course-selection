@@ -1,3 +1,139 @@
+<%# provide :title, ('当前用户：' + current_user.name if logged_in?) %>
+<%# provide :subtitle, ('已选课程') %>
+<!--<body style="background: none">-->
+
+<%#= render 'shared/sidebar' %>
+<%#= render 'shared/bootstrap_table' %>
+<!--<div class="right-side-div">-->
+
+<!--  <h1><%#= yield :subtitle %></h1>-->
+<!--  <div class="divide"></div>-->
+  <%# flash.each do |message_type, message| %>
+<!--    <div class="alert course-alert alert-<%#= message_type %>"><%#= message %></div>-->
+  <%# end %>
+<!--  <table id="selected-course-table">-->
+
+<!--  </table>-->
+<!--</div>-->
+
+<!--<script type="application/javascript">-->
+
+<!--    $("#document").ready(function () {-->
+<!--        $(function () {-->
+<!--            var oTable = new TableInit();-->
+<!--            oTable.Init();-->
+<!--        });-->
+
+<!--        var TableInit = function () {-->
+<!--            var oTableInit = {};-->
+<!--            oTableInit.Init = function () {-->
+<!--                $('#selected-course-table').bootstrapTable({-->
+<!--                    url: '/get_selected_courses',         //请求后台的URL（*）-->
+<!--                    method: 'get',                      //请求方式（*）-->
+<!--                    toolbar: '#toolbar',                //工具按钮用哪个容器-->
+<!--                    striped: true,                      //是否显示行间隔色-->
+<!--                    cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）-->
+<!--                    pagination: true,                   //是否显示分页（*）-->
+<!--                    sortable: true,                     //是否启用排序-->
+<!--                    sortOrder: "asc",                   //排序方式-->
+<!--                    queryParams: oTableInit.queryParams,//传递参数（*）-->
+<!--                    sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）-->
+<!--                    pageNumber: 1,                       //初始化加载第一页，默认第一页-->
+<!--                    pageSize: 10,                       //每页的记录行数（*）-->
+<!--                    pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）-->
+<!--                    contentType: "application/x-www-form-urlencoded",-->
+<!--                    strictSearch: true,-->
+<!--                    showColumns: true,                  //是否显示所有的列-->
+<!--                    showRefresh: true,                  //是否显示刷新按钮-->
+<!--                    minimumCountColumns: 2,             //最少允许的列数-->
+<!--                    clickToSelect: true,                //是否启用点击选中行-->
+<!--                    height: 700,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度-->
+<!--                    showToggle: true,                    //是否显示详细视图和列表视图的切换按钮-->
+<!--                    cardView: false,                    //是否显示详细视图-->
+<!--                    detailView: false,                   //是否显示父子表-->
+<!--                    columns: [-->
+<!--                        {-->
+<!--                            field: 'cno',-->
+<!--                            title: '课程号'-->
+<!--                        }, {-->
+<!--                            field: 'title',-->
+<!--                            title: '课程名'-->
+<!--                        }, {-->
+<!--                            field: 'year',-->
+<!--                            title: '学年'-->
+<!--                        }, {-->
+<!--                            field: 'semester',-->
+<!--                            title: '学期'-->
+<!--                        }, {-->
+<!--                            field: 'select_limit_and_selected_count',-->
+<!--                            title: '限选/已选人数',-->
+<!--                        }, {-->
+<!--                            field: 'credit_and_hours',-->
+<!--                            title: '学分/学时',-->
+<!--                        }, {-->
+<!--                            field: 'week_time_classroom',-->
+<!--                            title: '周次/时间/教室',-->
+<!--                            formatter: week_time_classroom-->
+<!--                        }, {-->
+<!--                            field: 'dept_name',-->
+<!--                            title: '开课单位',-->
+<!--                        }, {-->
+<!--                            field: 'course_type',-->
+<!--                            title: '类型',-->
+<!--                        }, {-->
+<!--                            field: 'teachers',-->
+<!--                            title: '授课教师',-->
+<!--                        }, {-->
+<!--                            field: 'is_degree_course',-->
+<!--                            title: '学位课',-->
+<!--                            formatter: degree_course-->
+<!--                        }, {-->
+<!--                            field: 'operate',-->
+<!--                            title: '操作',-->
+<!--                            formatter: operateFormatter //自定义方法，添加操作按钮-->
+<!--                        },-->
+<!--                    ],-->
+<!--                });-->
+<!--            };-->
+
+<!--            //得到查询的参数-->
+<!--            oTableInit.queryParams = function (params) {-->
+<!--                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的-->
+<!--                    limit: params.limit,   //页面大小-->
+<!--                    offset: params.offset-->
+<!--                };-->
+<!--                return temp;-->
+<!--            };-->
+<!--            return oTableInit;-->
+<!--        };-->
+
+<!--        function week_time_classroom(value, row, index) {-->
+<!--            times = value.split(";");-->
+<!--            res = "";-->
+<!--            $.each(times, function () {-->
+<!--                res += "<div>" + this + " </div>"-->
+<!--            });-->
+<!--            return res;-->
+<!--        }-->
+
+<!--        function degree_course(value, row, index) {-->
+<!--            return value? '是' : '否'-->
+<!--        }-->
+
+<!--        function operateFormatter(value, row, index) {//赋予的参数-->
+<!--            console.log(row.is_degree_course);-->
+<!--            set_degree_course_a = "<a class='table-operation-a' data-confirm='确定将这门课设为学位课吗?' rel='nofollow' data-method='get' href='/set_degree_course?cno=" + row.cno + "&option="+ (row.is_degree_course? 'un_set' : 'set') +"'>"+ (row.is_degree_course? '取消' : '设为') +"学位课</a>"-->
+<!--            return [-->
+<!--                "<a class='table-operation-a' data-confirm='确定要退选这门课吗?' rel='nofollow' data-method='delete' href='/to_un_select_course?cno=" + row.cno + "'>退课</a>",-->
+<!--                set_degree_course_a-->
+<!--            ].join('/');-->
+<!--        }-->
+<!--    });-->
+
+<!--</script>-->
+
+<!--</body>-->
+
 <% provide :title, ('当前用户：' + current_user.name if logged_in?) %>
 <% provide :subtitle, ('已选课程') %>
 <body style="background: none">
@@ -11,126 +147,115 @@
   <% flash.each do |message_type, message| %>
     <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
-  <table id="selected-course-table">
 
+  <form class="form-inline" style="text-align: right; padding-right: 0" action="/selected_courses" method="post">
+
+    <%= tag(:input, :type => "hidden", :name =>
+        request_forgery_protection_token.to_s, :value =>
+                form_authenticity_token) %>
+
+    <div class="form-group">
+      <label for="year">学年：</label>
+      <select class="form-control" id="year" name="year">
+        <option>全部</option>
+        <%= @years.each do |year| %>
+          <% if params[:year].to_i == year %>
+            <option value="<%= year %>" selected="selected"><%= year %></option>
+          <% else %>
+            <option value="<%= year %>"><%= year %></option>
+          <% end %>
+        <% end %> %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="semester">学期：</label>
+      <select class="form-control" id="semester" name="semester">
+        <option>全部</option>
+        <%= @semester.each do |value| %>
+          <% if params[:semester].to_s == value %>
+            <option value="<%= value %>" selected="selected"><%= value %></option>
+          <% else %>
+            <option value="<%= value %>"><%= value %></option>
+          <% end %>
+        <% end %> %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="department">开课单位：</label>
+      <select class="form-control" id="department" name="department">
+        <option>全部</option>
+        <% @departments.each do |d| %>
+          <% if params[:department].to_i == d.id %>
+            <option selected="selected" value="<%= d.id %>>"><%= d.name %></option>
+          <% else %>
+            <option value="<%= d.id %>"><%= d.name %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="course-type">课程类型：</label>
+      <select class="form-control" id="course-type" name="course_type">
+        <option>全部</option>
+        <option>专业选修课</option>
+        <option>专业核心课</option>
+        <option>专业必修课</option>
+        <option>专业讨论课</option>
+        <option>公共必修课</option>
+        <option>公共选修课</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input type="submit" class="btn btn-default" value="搜 索"/>
+    </div>
+
+  </form>
+  <table class="table table-striped table-bordered table-hover" style="margin-top: 10px">
+    <thead>
+    <th>学年</th>
+    <th>学期</th>
+    <th>课程编号</th>
+    <th>课程名</th>
+    <th>周次/时间/教室</th>
+    <th>学时/学分</th>
+    <th>类型</th>
+    <th>授课教师</th>
+    <th>限选/已选人数</th>
+    <th>操作</th>
+    </thead>
+    <tbody>
+
+    <% @courses.each do |c| %>
+      <tr>
+        <td><%= c.year %></td>
+        <td><%= c.semester %></td>
+        <td><%= c.cno %></td>
+        <td><%= c.title %></td>
+        <td>
+          <% c.week_time_classroom.split(";").each do |time| %>
+            <div><%= time %></div>
+          <% end %>
+        </td>
+        <td><%= c.hours.to_s + "/" + c.credit.to_s %></td>
+        <td><%= c.course_type %></td>
+        <td><%= get_teachers_name c %></td>
+        <td><%= c.select_limit.to_s + "/" + c.students.count.to_s %></td>
+        <td><%= link_to '退课', to_un_select_course_url(cno: c.cno), method: :delete, data: {confirm: "您确定要退选这门课吗？"} %></td>
+      </tr>
+    <% end %>
+
+    </tbody>
   </table>
+
+  <%= will_paginate @courses, {previous_label: "« 上一页", next_label: "下一页 »"} %>
 </div>
 
-<script type="application/javascript">
-
-    $("#document").ready(function () {
-        $(function () {
-            var oTable = new TableInit();
-            oTable.Init();
-        });
-
-        var TableInit = function () {
-            var oTableInit = {};
-            oTableInit.Init = function () {
-                $('#selected-course-table').bootstrapTable({
-                    url: '/get_selected_courses',         //请求后台的URL（*）
-                    method: 'get',                      //请求方式（*）
-                    toolbar: '#toolbar',                //工具按钮用哪个容器
-                    striped: true,                      //是否显示行间隔色
-                    cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-                    pagination: true,                   //是否显示分页（*）
-                    sortable: true,                     //是否启用排序
-                    sortOrder: "asc",                   //排序方式
-                    queryParams: oTableInit.queryParams,//传递参数（*）
-                    sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-                    pageNumber: 1,                       //初始化加载第一页，默认第一页
-                    pageSize: 10,                       //每页的记录行数（*）
-                    pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-                    contentType: "application/x-www-form-urlencoded",
-                    strictSearch: true,
-                    showColumns: true,                  //是否显示所有的列
-                    showRefresh: true,                  //是否显示刷新按钮
-                    minimumCountColumns: 2,             //最少允许的列数
-                    clickToSelect: true,                //是否启用点击选中行
-                    height: 700,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                    showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
-                    cardView: false,                    //是否显示详细视图
-                    detailView: false,                   //是否显示父子表
-                    columns: [
-                        {
-                            field: 'cno',
-                            title: '课程号'
-                        }, {
-                            field: 'title',
-                            title: '课程名'
-                        }, {
-                            field: 'year',
-                            title: '学年'
-                        }, {
-                            field: 'semester',
-                            title: '学期'
-                        }, {
-                            field: 'select_limit_and_selected_count',
-                            title: '限选/已选人数',
-                        }, {
-                            field: 'credit_and_hours',
-                            title: '学分/学时',
-                        }, {
-                            field: 'week_time_classroom',
-                            title: '周次/时间/教室',
-                            formatter: week_time_classroom
-                        }, {
-                            field: 'dept_name',
-                            title: '开课单位',
-                        }, {
-                            field: 'course_type',
-                            title: '类型',
-                        }, {
-                            field: 'teachers',
-                            title: '授课教师',
-                        }, {
-                            field: 'is_degree_course',
-                            title: '学位课',
-                            formatter: degree_course
-                        }, {
-                            field: 'operate',
-                            title: '操作',
-                            formatter: operateFormatter //自定义方法，添加操作按钮
-                        },
-                    ],
-                });
-            };
-
-            //得到查询的参数
-            oTableInit.queryParams = function (params) {
-                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                    limit: params.limit,   //页面大小
-                    offset: params.offset
-                };
-                return temp;
-            };
-            return oTableInit;
-        };
-
-        function week_time_classroom(value, row, index) {
-            times = value.split(";");
-            res = "";
-            $.each(times, function () {
-                res += "<div>" + this + " </div>"
-            });
-            return res;
-        }
-
-        function degree_course(value, row, index) {
-            return value? '是' : '否'
-        }
-
-        function operateFormatter(value, row, index) {//赋予的参数
-            console.log(row.is_degree_course);
-            set_degree_course_a = "<a class='table-operation-a' data-confirm='确定将这门课设为学位课吗?' rel='nofollow' data-method='get' href='/set_degree_course?cno=" + row.cno + "&option="+ (row.is_degree_course? 'un_set' : 'set') +"'>"+ (row.is_degree_course? '取消' : '设为') +"学位课</a>"
-            return [
-                "<a class='table-operation-a' data-confirm='确定要退选这门课吗?' rel='nofollow' data-method='delete' href='/to_un_select_course?cno=" + row.cno + "'>退课</a>",
-                set_degree_course_a
-            ].join('/');
-        }
-    });
-
-</script>
 
 </body>
+
+
 

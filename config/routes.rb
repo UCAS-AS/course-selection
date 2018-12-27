@@ -26,10 +26,10 @@ Rails.application.routes.draw do
   resources :password_reset, only: [:edit]
 
   get '/select_courses', to: 'courses#select_courses'
+  post '/select_courses', to: 'courses#select_courses'
   get '/selected_courses', to: 'courses#selected_courses'
+  post '/selected_courses', to: 'courses#selected_courses'
   get '/credit_count', to: 'courses#credit_count'
-  get '/get_select_courses', to: 'courses#get_select_courses'
-  get '/get_selected_courses', to: 'courses#get_selected_courses'
 
   post '/to_select_course', to: 'select_relationships#create'
   delete '/to_un_select_course', to: 'select_relationships#destroy'

@@ -12,7 +12,51 @@
     <div class="alert course-alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
 
+  <table class="table table-hover">
+    <thead>
+    <th>
+      专业必修课
+    </th>
+    <th>
+      专业选修课
+    </th>
+    <th>
+      专业核心课
+    </th>
+    <th>
+      公共必修课
+    </th>
+    <th>
+      公共选修课
+    </th>
+    <th>
+      专业讨论课
+    </th>
+    <th>
+      总计学分
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= grade_count @current_user.courses.find_by(course_type: "专业必修课") %></td>
+      <td><%= grade_count @current_user.courses.find_by(course_type: "专业选修课") %></td>
+      <td><%= grade_count @current_user.courses.find_by(course_type: "专业核心课") %></td>
+      <td><%= grade_count @current_user.courses.find_by(course_type: "公共必修课") %></td>
+      <td><%= grade_count @current_user.courses.find_by(course_type: "公共选修课") %></td>
+      <td><%= grade_count @current_user.courses.find_by(course_type: "专业讨论课") %></td>
+      <td><%= grade_count @current_user.courses %></td>
+    </tr>
+    </tbody>
+  </table>
 
 </div>
+
+<style>
+
+  th {
+    text-align: center;
+  }
+
+</style>
 
 </body>
