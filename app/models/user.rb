@@ -70,7 +70,7 @@ module User
   end
 
   def email_activation_expired?
-    self.email_activated_sent_at.nil? || self.email_activated_sent_at < 30.minutes.ago
+    self.email_activation_digest.nil? || self.email_activated_sent_at < 30.minutes.ago
   end
 
   protected

@@ -8,9 +8,9 @@ class UserMailer < ApplicationMailer
   def email_activation(user, email, option)
     @greeting = "您好"
     @user = user
-    @email = email
+    @new_email = email
     @option = option
-    mail to: @email, subject: "邮箱激活 - 选课系统"
+    mail to: @new_email, subject: "邮箱激活 - 选课系统"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

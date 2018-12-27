@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_201921) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "remember_digest"
-    t.boolean "email_activated"
+    t.boolean "email_activated", default: false
     t.string "email_activation_digest"
     t.datetime "email_activated_sent_at"
     t.bigint "department_id"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2018_12_23_201921) do
     t.string "remember_digest"
     t.string "email_activation_digest"
     t.boolean "email_activated"
-    t.datetime "email_activated_at"
+    t.datetime "email_activated_sent_at"
     t.bigint "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

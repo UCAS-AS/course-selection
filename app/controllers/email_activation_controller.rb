@@ -6,27 +6,30 @@ class EmailActivationController < ApplicationController
 
   def edit
     p params
-    id = params[:user_id]
     email = params[:email]
+    new_email = params[:new_email]
 
-    temp_user = Student.find(id) || Teacher.find(id)
-
-    if temp_user.nil?
-      flash[:danger] = "邮箱没有绑定任何用户。"
-    elsif temp_user.email == email
+    if new_email == email
       flash[:warning] = "您的邮箱已激活。"
-    elsif temp_user.email_activation_expired?
-      flash[:warning] = "激活链接已过期。"
-    elsif temp_user.authenticated? 'email_activation', params[:id]
-      flash[:success] = "您的新邮箱已成功激活！"
-      temp_user.email_activation email
-      if logged_in?
-        redirect_to email_setting_url
-      else
-        redirect_to root_url
+    else
+      temp_user = Student.find_by(email: new_email) || Teacher.find_by(email: new_email)
+      user = Student.find_by(email: email) || Teacher.find_by(email: email)
+
+      if !temp_user.nil? || user.nil?
+        flash[:danger] = "无效的链接。"
+      elsif user.email_activation_expired?
+        flash[:warning] = "激活链接已过期。"
+      elsif user.authenticated? 'email_activation', params[:id]
+        flash[:success] = "您的新邮箱已成功激活！"
+        user.email_activation new_email
       end
     end
 
+    if logged_in?
+      redirect_to email_setting_url
+    else
+      redirect_to root_url
+    end
   end
 
   def create
