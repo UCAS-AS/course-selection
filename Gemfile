@@ -22,7 +22,6 @@ gem 'bootstrap-sass', '~>3.3.7'
 gem 'mysql2', '~> 0.5.2'
 gem 'carrierwave', '~>1.2.3'
 gem 'mini_magick', '~>4.9.2'
-gem 'fog', '~>2.1.0'
 gem 'devise', '~>4.5.0'
 gem 'json', '~>2.1.0'
 
