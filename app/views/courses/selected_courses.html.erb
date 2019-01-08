@@ -89,6 +89,7 @@
     <th>开课单位</th>
     <th>授课教师</th>
     <th>限选/已选人数</th>
+    <th>是否学位课</th>
     <th>操作</th>
     </thead>
     <tbody>
@@ -107,7 +108,21 @@
         <td><%= c.department.name %></td>
         <td><%= get_teachers_name c %></td>
         <td><%= c.select_limit.to_s + "/" + c.students.count.to_s %></td>
-        <td><%= link_to '退课', to_un_select_course_url(cno: c.cno), method: :delete, data: {confirm: "您确定要退选这门课吗？"} %></td>
+        <td>
+          <% if is_degree_course(@current_user, c) %>
+            是
+          <% else %>
+            否
+          <% end %>
+        </td>
+        <td>
+          <%= link_to '退课', to_un_select_course_url(cno: c.cno), method: :delete, data: {confirm: "您确定要退选这门课吗？"} %>
+          <% unless is_degree_course(@current_user, c) %>
+            <%= link_to '设为学位课', set_degree_course_url(cno: c.cno, option: 'set'), method: :post, data: {confirm: "您确定要将《" + c.title + "》设为学位课吗？"} %>
+          <% else %>
+            <%= link_to '取消学位课', set_degree_course_url(cno: c.cno, option: 'un_set'), method: :post, data: {confirm: "您确定要取消将《" + c.title + "》设为学位课吗？"} %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
 

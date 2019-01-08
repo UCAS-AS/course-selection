@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   post '/to_select_course', to: 'select_relationships#create'
   delete '/to_un_select_course', to: 'select_relationships#destroy'
-  get '/set_degree_course', to: 'select_relationships#update'
+  post '/set_degree_course', to: 'select_relationships#update'
   get '/grades', to: 'select_relationships#grades'
 
   get '/my_courses', to: 'teach_relationships#my_courses'
