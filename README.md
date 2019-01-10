@@ -157,8 +157,50 @@ $ rails s
 2. 管理员后台登录验证
 3. 选课权限开放
 
+## 系统截图
+#### 1. 学生登录界面
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/学生登录.png)
+
+#### 2. 教师登录界面
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/教师登录.png)
+
+#### 3. 重置密码
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/重置密码.png)
+
+#### 4. 邮箱设置
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/邮箱设置.png)
+
+#### 5. 修改密码
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/修改密码.png)
+
+#### 6. 学生选课
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/学生选课.png)
+
+#### 7. 学生查看已选课程
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/学生查看已选课程.png)
+
+#### 8. 学生学分统计
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/学生学分统计.png)
+
+#### 9. 学生成绩查询
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/学生成绩查询.png)
+
+#### 10. 教师查看教授课程
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/教师查看教授课程.png)
+
+#### 11. 教师登记课程成绩
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/教师登记课程成绩-1.png)
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/教师登记课程成绩-2.png)
+
+#### 12. 教师发布课程通知
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/发布课程通知.png)
+
+#### 13. 后台管理
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/后台管理%20-%20主界面.png)
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/后台管理%20-%20课程管理.png)
+
 ## 测试
-### 一、本地测试
+### 一、运行所有测试样例
 执行命令：
 
 ```bash
