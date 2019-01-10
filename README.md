@@ -7,19 +7,104 @@
 ### 题目
 选课系统
 
-### 组员成员
-颜复海 王毅蒙 徐文文
+### 简介
+选课系统面向学生、教师与管理员（例如教务处），提供与课程管理有关功能，目标是为学生、教师与管理员等用户进行教育教学相关工作和安排提供有效的信息化管理手段。
 
-## 如何运行
+本项目仅作为选课系统的一个原型，无商业用途。
+
+### 组员成员
+颜复海（组长），王毅蒙，徐文文。
+
+## 如何部署和运行？
+### 1. 克隆本仓库到本地
 
 ```bash
 $ git clone https://github.com/UCAS-AS/course-selection.git
+```
+
+### 2. 数据库设置（推荐使用 MySQL）
+1. 在数据库中创建以下数据库
+	
+	```course_selection```
+	```course_selection_test```
+	
+2. 修改配置文件```config/database.yml```
+
+	添加你的数据库信息，如：
+	
+	```bash
+	default: &default
+	  adapter: mysql2
+	  encoding: utf8
+	  username: ruby
+	  password: neptune.
+	  host: localhost
+	  port: 3306
+	  flags:
+	  - -COMPRESS
+	  - FOUND_ROWS
+	  - MULTI_STATEMENTS
+	  secure_auth: false
+	
+	development:
+	  <<: *default
+	  database: course_selection
+	
+	test:
+	  <<: *default
+	  database: course_selection_test
+	
+	production:
+	  <<: *default
+	  database: course_selection
+	
+	```
+
+### 3. 邮箱服务配置（可选）
+
+本项目默认使用我们已经注册的 126 邮箱作为邮件发送邮箱。
+
+如果你需要使用自己的邮箱服务器，将以下配置中的有关账号信息修改成你的邮箱账号信息即可。在文件 ```config/environments/development``` 和 ```config/environments/production``` 中修改以下信息：
+
+```bash
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.xxx.com',
+    :port           => 'xx',
+    :authentication => :plain,
+    :user_name      => 'your account',
+    :password       => 'your password',
+    :domain         => 'xxx.com',
+  }
+```
+
+### 4. 启动服务器
+
+```bash
 $ cd course-selection
 $ bundle install
 $ rails db:migrate
 $ rails db:seed
 $ rails s
 ```
+
+### 5. 默认账户
+
+1. 学生：
+	
+	学号：2018E000000000
+	
+	密码：neptune.
+	
+2. 教师：
+
+	教职工号：200010101000
+	
+	密码：neptune.
 
 ## 功能简介
 ### 一、学生模块
@@ -60,3 +145,29 @@ $ rails s
 	- 删除课程
 	- 更新课程信息
 	- 查看所有课程
+3. 院系管理
+	- 添加新院系
+	- 删除院系
+	- 更新院系信息
+	- 查看所有院系
+
+### 四、待完善功能
+1. 课表查询
+2. 管理员后台登录验证
+3. 选课权限开放
+
+## 测试
+### 一、测试内容
+1. 字段验证
+2. 页面跳转验证
+
+### 二、测试结果
+执行命令：
+
+```bash
+$ rails test
+```
+
+结果如下：
+
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/测试结果.png)
