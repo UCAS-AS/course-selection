@@ -1,0 +1,22 @@
+one: {
+  tno: '200010101000',
+  name: '胡伟武',
+  email: 'hww@ucas.edu.cn',
+  gender: '男',
+  phone: '',
+  birth_date: '1968-11-01',
+  title: '研究员',
+  department_id: 2,
+  password_digest: '$2a$10$HEb2UqZMO/tVXobbRIbSyOIztvz3T.E/rrKzdDxfQzmde1yUxRX7C'
+}
+
+two: {
+  tno: '200010101001',
+  name: '汪文祥',
+  email: 'wwx@ucas.edu.cn',
+  gender: '男',
+  phone: '',
+  birth_date: '1968-11-01',
+  title: '研究员',
+  department_id: 2
+}

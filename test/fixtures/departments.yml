@@ -1,0 +1,9 @@
+one: {
+  dno: "CS",
+  name: "计算机与控制学院"
+}
+
+two: {
+  dno: "MATH",
+  name: "数学科学学院"
+}

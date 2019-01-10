@@ -1,0 +1,26 @@
+one: {
+  sno: '2018E8015061017',
+  name: 'Kevin Yan',
+  email: 'kevin_yan@foxmail.com',
+  gender: '男',
+  enrolled_date: '2018-09-01',
+  birth_date: '1995-12-02',
+  degree: '硕士',
+  phone: '18813143670',
+  major: '软件工程',
+  department_id: 2,
+  password_digest: '$2a$10$HEb2UqZMO/tVXobbRIbSyOIztvz3T.E/rrKzdDxfQzmde1yUxRX7C'
+}
+
+two: {
+  sno: '2018E8015061018',
+  name: 'Kelly',
+  email: 'kelly@foxmail.com',
+  gender: '女',
+  enrolled_date: '2018-09-01',
+  birth_date: '1995-12-02',
+  degree: '硕士',
+  phone: '',
+  major: '软件工程',
+  department_id: 2
+}
