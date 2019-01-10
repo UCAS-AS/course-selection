@@ -12,7 +12,7 @@
 
 本项目仅作为选课系统的一个原型，无商业用途。
 
-### 组员成员
+### 成员
 颜复海（组长），王毅蒙，徐文文。
 
 ## 如何部署和运行？
@@ -25,8 +25,7 @@ $ git clone https://github.com/UCAS-AS/course-selection.git
 ### 2. 数据库设置（推荐使用 MySQL）
 1. 在数据库中创建以下数据库
 	
-	```course_selection```
-	```course_selection_test```
+	```course_selection```，```course_selection_test```。
 	
 2. 修改配置文件```config/database.yml```
 
@@ -92,19 +91,21 @@ $ rails db:seed
 $ rails s
 ```
 
+启动服务器后，在浏览器中输入：```http://localhost:3000``` 即可访问选课系统。
+
 ### 5. 默认账户
 
 1. 学生：
 	
-	学号：2018E000000000
+	学号：```2018E000000000```
 	
-	密码：neptune.
+	密码：```neptune.```
 	
 2. 教师：
 
-	教职工号：200010101000
+	教职工号：```200010101000```
 	
-	密码：neptune.
+	密码：```neptune.```
 
 ## 功能简介
 ### 一、学生模块
@@ -157,11 +158,7 @@ $ rails s
 3. 选课权限开放
 
 ## 测试
-### 一、测试内容
-1. 字段验证
-2. 页面跳转验证
-
-### 二、测试结果
+### 一、本地测试
 执行命令：
 
 ```bash
@@ -170,4 +167,47 @@ $ rails test
 
 结果如下：
 
-![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/测试结果.png)
+<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/测试结果.png'/ style="width:500px">
+
+### 二、模型测试
+模型测试中，我们针对各模型的字段进行了验证，具体如下：
+
+执行命令：
+
+```bash
+$ rails test:models
+```
+
+结果如下：
+
+<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/模型测试.png'/ style="width:500px">
+
+### 三、集成测试
+集成测试中，我们主要做了用户登录验证以及用户登录后的页面跳转的测试，具体如下：
+
+#### 1. 用户登录验证
+
+执行命令：
+
+```bash
+$ rails test test/integration/user_login_test.rb  
+```
+
+结果如下：
+
+<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/集成测试-2.png'/ style="width:500px">
+
+#### 2. 用户登录后页面跳转
+
+执行命令：
+
+```bash
+$ rails test test/integration/actions_after_login_test.rb   
+```
+
+结果如下：
+
+<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/集成测试-1.png'/ style="width:500px">
+
+
+
