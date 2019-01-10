@@ -42,7 +42,7 @@ Department.create!(dno: 'ic', name: '国际学院')
 
 dept = Department.find_by(dno: 'scce')
 
-dept.students.create!(sno: '2018E8015061016',
+dept.students.create!(sno: '2018E000000000',
                       name: '颜复海',
                       email: 'yan_fuhai@foxmail.com',
                       gender: '男',
