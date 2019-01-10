@@ -55,7 +55,7 @@ Rails.application.configure do
     :port           => '25',
     :authentication => :plain,
     :user_name      => 'course_selection',
-    :password       => 'Y5EzVcdfqyh9zkEp',
+    :password       => 'xxxxxxxxxxxxxxxxx',
     :domain         => '126.com',
   }
 end
