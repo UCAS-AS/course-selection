@@ -167,7 +167,7 @@ $ rails test
 
 结果如下：
 
-<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/测试结果.png'/ style="width:500px">
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/测试结果.png)
 
 ### 二、模型测试
 模型测试中，我们针对各模型的字段进行了验证，具体如下：
@@ -180,7 +180,7 @@ $ rails test:models
 
 结果如下：
 
-<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/模型测试.png'/ style="width:500px">
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/模型测试.png)
 
 ### 三、集成测试
 集成测试中，我们主要做了用户登录验证以及用户登录后的页面跳转的测试，具体如下：
@@ -195,7 +195,7 @@ $ rails test test/integration/user_login_test.rb
 
 结果如下：
 
-<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/集成测试-2.png'/ style="width:500px">
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/集成测试-2.png)
 
 #### 2. 用户登录后页面跳转
 
@@ -207,7 +207,7 @@ $ rails test test/integration/actions_after_login_test.rb
 
 结果如下：
 
-<img src='https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/集成测试-1.png'/ style="width:500px">
+![](https://raw.githubusercontent.com/UCAS-AS/course-selection/master/%20screenshots/集成测试-1.png)
 
 
 
