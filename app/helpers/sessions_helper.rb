@@ -51,6 +51,8 @@ module SessionsHelper
     end
   end
 
+  # 冲突检测算法
+  # 使用 Hash 实现课程时间树。
   def conflict(week_time_classroom, time_tree)
     is_conflicted = false
 
